@@ -1,3 +1,4 @@
+import copy
 import sys
 
 import pytest
@@ -28,5 +29,6 @@ def test_len():
 
 
 def test_append():
-    FRUITS.append("banana")
-    assert FRUITS == ["apple", "banana"]
+    arr = copy.copy(FRUITS)
+    arr.append("banana")
+    assert arr == ["apple", "banana"]
