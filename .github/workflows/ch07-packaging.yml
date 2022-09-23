@@ -138,10 +138,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # https://github.com/marketplace/actions/download-a-build-artifact
       - uses: actions/download-artifact@v3
         with:
           name: artifact
           path: ./ch07/first-python-package/dist # Update to match root of package
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./ch07/first-python-package/dist
 
       - uses: pypa/gh-action-pypi-publish@v1.5.0
         with:
