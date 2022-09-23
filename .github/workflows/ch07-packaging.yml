@@ -125,6 +125,8 @@ jobs:
         with:
           path: ./ch07/first-python-package/wheels/*.whl # Update to match root of package
 
+  # jobs in `needs` run duplicate. try to avoid this.
+  # explore https://docs.github.com/en/actions/using-workflows/reusing-workflows
   publish:
     name: Publish package
     if: startsWith(github.event.ref, 'refs/tags/v')
@@ -143,10 +145,6 @@ jobs:
         with:
           name: artifact
           path: ./ch07/first-python-package/dist # Update to match root of package
-
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: ./ch07/first-python-package/dist
 
       - uses: pypa/gh-action-pypi-publish@v1.5.0
         with:
