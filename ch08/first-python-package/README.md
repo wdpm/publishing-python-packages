@@ -5,5 +5,9 @@ This package does amazing things.
 ## Installation
 
 ```shell
-$ python -m pip install first-python-package
+$ python -m pip install .
 ```
+
+## setup docs
+
+see setup.cfg
