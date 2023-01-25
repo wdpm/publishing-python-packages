@@ -2,18 +2,20 @@
 
 Fork of 《Publishing Python Packages》book.
 
-## 关键
+## 笔记
 
-主要下面的文件：
+目录说明：
 
 - .github
-- ch07/
-- ch08/
+- ch05 初具模型，基础的tox的使用
+- ch06 重构解耦代码，模块化，SOLID原则。增加 typecheck(mypy)、lint(flake8)、format(black) 、测试hello配置。
+- ~~ch07/ src和test代码和ch06一致，删除~~
+- ch08/ 增加文档构建配置。sphinx，默认主题alabaster非常简陋。
 - ch09/
 - .pre-commit-config.yaml
 
 .github 中关注 workflow 的配置。
 
-ch07和ch08几乎没有配置的区别，ch09添加了docs生成配置，ch10的模本生成不实用可以抛弃。
+ch09添加了docs生成配置，ch10的模本生成不实用可以抛弃。
 
 .pre-commit-config.yaml 配置了本地pre-commit的hooks。

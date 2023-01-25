@@ -130,3 +130,9 @@ dmypy.json
 
 # Compiled extensions
 *.c
+
+
+# IDE metadata
+.idea
+.fleet
+.vscode

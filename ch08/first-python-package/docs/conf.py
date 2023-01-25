@@ -12,6 +12,7 @@
 #
 import os
 from importlib import metadata
+
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -25,12 +26,14 @@ PACKAGE_VERSION = metadata.version("pubpypack-harmony-dane-hillard")
 version = PACKAGE_VERSION
 release = PACKAGE_VERSION
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+
+# Sphinx provides several extensions that are disabled by default.
+# The autodoc and typehints extensions help automatically extract documentation from source code.
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autodoc.typehints',
@@ -44,19 +47,20 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
+# 这几个主题都很不错。
+# https://sphinx-themes.org/sample-sites/sphinx-book-theme/placeholder-one/
+# https://sphinx-themes.org/sample-sites/sphinx-material/search/?q=material
+# https://sphinx-themes.org/sample-sites/sphinx-rtd-theme/
 html_theme = 'alabaster'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-
 
 # -- Setup for sphinx-apidoc -------------------------------------------------
 
@@ -69,6 +73,7 @@ if os.environ.get("READTHEDOCS") == "True":
 
     PROJECT_ROOT = Path(__file__).parent.parent
     PACKAGE_ROOT = PROJECT_ROOT / "src" / "imppkg"
+
 
     def run_apidoc(_):
         from sphinx.ext import apidoc
@@ -83,6 +88,7 @@ if os.environ.get("READTHEDOCS") == "True":
             str(PACKAGE_ROOT / "*.c"),
             str(PACKAGE_ROOT / "*.so"),
         ])
+
 
     def setup(app):
         app.connect('builder-inited', run_apidoc)
