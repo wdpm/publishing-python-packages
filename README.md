@@ -10,7 +10,7 @@ Fork of 《Publishing Python Packages》book.
 - ch05 初具模型，基础的tox的使用
 - ch06 重构解耦代码，模块化，SOLID原则。增加 typecheck(mypy)、lint(flake8)、format(black) 、测试hello配置。
 - ~~ch07/ src和test代码和ch06一致，删除~~
-- ch08/ 增加文档构建配置。sphinx，默认主题alabaster非常简陋。
+- ch08/ 增加文档构建配置。sphinx，默认主题alabaster非常简陋。**添加自定义sphinx-rtd-theme主题后，注意在 cfg 文件中添加对应依赖**。
 - ch09/
 - .pre-commit-config.yaml
 

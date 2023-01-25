@@ -55,7 +55,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://sphinx-themes.org/sample-sites/sphinx-book-theme/placeholder-one/
 # https://sphinx-themes.org/sample-sites/sphinx-material/search/?q=material
 # https://sphinx-themes.org/sample-sites/sphinx-rtd-theme/
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
