@@ -14,6 +14,7 @@ This package provides utilities for calculating the `harmonic mean <https://en.w
 
    reference/modules
 
+Make some changes.
 
 Indices and tables
 ==================
