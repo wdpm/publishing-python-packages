@@ -25,6 +25,7 @@ jobs:
           - name: "WCAG"
             level: "AAA"
 
+#    4x3x2=24 choices
     steps:
       - name: Check accessibility
         run: |

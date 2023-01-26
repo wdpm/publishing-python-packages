@@ -19,13 +19,10 @@ Fork of 《Publishing Python Packages》book.
 - ch08/
   - 增加 sphinx 文档构建配置。默认主题 alabaster 非常简陋。** 添加自定义 sphinx-rtd-theme 主题后，注意在 cfg 文件中添加对应依赖 **。
   - 托管到 read the docs 网站。注册 read the docs 账号，可以使用 github 互联。
-    -
-      0. 保证 project 根目录下存在正确配置的.readthedocs.yaml
+    - 0.保证 project 根目录下存在正确配置的.readthedocs.yaml
     - 1.import 特定的 github project；
-    -
-      2. 填写元信息，勾选 advanced setting。
-    -
-      3. 填写 Project Extra Details。
+    - 2.填写元信息，勾选 advanced setting。
+    - 3.填写 Project Extra Details。
   - Running sphinx-apidoc on Read the Docs。配置对应 conf.py，利用 build doc 的生命周期的 builder-inited
   - update per pull-request:
     - visit https://readthedocs.org/dashboard/publishing-python-packages/edit/
@@ -91,6 +88,7 @@ Fork of 《Publishing Python Packages》book.
     [WARNING] Stashed changes conflicted with hook auto-fixes... Rolling back fixes...
     ```
     - 问题分析：black8指定了ch09的配置，但是却检测了ch08的代码。
-    - 参阅[这个问题](https://stackoverflow.com/a/74046827) ，可以手动git add 出现冲突的文件。或者应该指定black作用的目录范围。
+    - 参阅[这个问题](https://stackoverflow.com/a/74046827) ，可以手动git add 出现冲突的文件，之后再次检测。
+    - 或者指定black排除的检测范围：在pre-commit中 1.使用exclude排除部分文件夹。2.使用files指定文件夹。
 
-ch09 添加了 docs 生成配置，ch10 的模本生成不实用可以抛弃。
+- ch10 的项目模板生成不实用，暂缓。

@@ -1,5 +1,7 @@
 # Contributing to Publishing Python Packages
 
+> This issue template is generally used for book projects.
+
 Thank you for your interest in improving _Publishing Python Packages_!
 Please read these guidelines to see how best to contribute to the book's success.
 
