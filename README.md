@@ -9,6 +9,11 @@ Fork of 《Publishing Python Packages》book.
 目录说明：
 
 - .github
+  - [x] issue template
+  - [x] pr template
+  - [x] contributing guideline
+  - [x] workflow files
+  - [x] dependabot.yml
 - ch05
 
   初具模型，基础的 tox 的使用
@@ -92,3 +97,9 @@ Fork of 《Publishing Python Packages》book.
     - 或者指定black排除的检测范围：在pre-commit中 1.使用exclude排除部分文件夹。2.使用files指定文件夹。
 
 - ch10 的项目模板生成不实用，暂缓。
+
+## TODO
+- [ ] .editorconfig for general files formatting.
+- [ ] markdown file linter
+  > https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
+  > https://github.com/DavidAnson/markdownlint
