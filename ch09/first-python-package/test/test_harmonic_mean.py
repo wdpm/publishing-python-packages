@@ -1,9 +1,8 @@
 import sys
 
 import pytest
-from termcolor import colored
-
 from imppkg.harmony import main
+from termcolor import colored
 
 
 @pytest.mark.parametrize(
