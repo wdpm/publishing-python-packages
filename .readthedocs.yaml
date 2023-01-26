@@ -1,3 +1,5 @@
+#refer: https://docs.readthedocs.io/en/stable/config-file/v2.html
+
 version: 2
 
 sphinx:
@@ -13,5 +15,6 @@ build:
 
 python:
   install:
+    #  How to install dependencies for the documentation build
     - method: pip
       path: ch08/first-python-package

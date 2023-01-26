@@ -51,7 +51,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-# 这几个主题都很不错。
+# some alternative themes:
 # https://sphinx-themes.org/sample-sites/sphinx-book-theme/placeholder-one/
 # https://sphinx-themes.org/sample-sites/sphinx-material/search/?q=material
 # https://sphinx-themes.org/sample-sites/sphinx-rtd-theme/
@@ -83,12 +83,16 @@ if os.environ.get("READTHEDOCS") == "True":
             "--module-first",
             "--separate",
             "-o",
+            # dest
             str(PROJECT_ROOT / "docs" / "reference"),
+            # source
             str(PACKAGE_ROOT),
+            # multi ignored files
             str(PACKAGE_ROOT / "*.c"),
             str(PACKAGE_ROOT / "*.so"),
         ])
 
 
     def setup(app):
+        # builder-inited: which triggers just before the build occurs.
         app.connect('builder-inited', run_apidoc)
