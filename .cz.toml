@@ -1,0 +1,20 @@
+# https://commitizen-tools.github.io/commitizen/config/
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.3"
+version_files = [
+    "ch09/first-python-package/src/imppkg/__version__.py",
+    "ch09/first-python-package/setup.cfg:version"
+]
+style = [
+    ["qmark", "fg:#ff3617 bold"],
+    ["question", "bold"],
+    ["answer", "fg:#ff3617 bold"],
+    ["pointer", "fg:#ff3617 bold"],
+    ["highlighted", "fg:#ff3617 bold"],
+    ["selected", "fg:#57cc45"],
+    ["separator", "fg:#57cc45"],
+    ["instruction", ""],
+    ["text", ""],
+    ["disabled", "fg:#858585 italic"]
+]

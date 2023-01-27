@@ -112,9 +112,13 @@ Fork of 《Publishing Python Packages》book.
 - [ ] markdown file linter
   - https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
   - https://github.com/DavidAnson/markdownlint
-- [ ] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理commit msg。
+- [x] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理commit msg。
    - https://github.com/commitizen-tools/commitizen
    - install: `pip install -U commitizen`
    - init config: `cz init`
    - install hooks: `pre-commit install --hook-type commit-msg --hook-type pre-push`
+   - test commit: `cz c`
+   - temporarily check message: `cz check --message "chore: something"`
+   - 现在，提交模式变为: `cz c` ，或者也可以使用之前的提交方式 `git commit -m "MSG"`，不需要理会cz hooks.
+   - 一个问题：`cz c`显示的列表type中，没有chore类型，而schema规范中显示有。我希望在下拉列表中可以选择chore或自定义类型。
 - [ ] local run github action from tech radar recommendation
