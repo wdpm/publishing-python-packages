@@ -20,7 +20,6 @@ Fork of 《Publishing Python Packages》book.
 - ch06
 
   重构解耦代码，模块化，SOLID 原则。增加 typecheck(mypy)、lint(flake8)、format(black) 、测试 hello 配置。
-- ~~ch07/ src 和 test 代码和 ch06 一致，删除 ~~
 - ch08/
   - 增加 sphinx 文档构建配置。默认主题 alabaster 非常简陋。** 添加自定义 sphinx-rtd-theme 主题后，注意在 cfg 文件中添加对应依赖 **。
   - 托管到 read the docs 网站。注册 read the docs 账号，可以使用 github 互联。
@@ -38,7 +37,7 @@ Fork of 《Publishing Python Packages》book.
     - 构造测试 pr 的步骤：在 main 分支创建一个 pr，拉取 pr 到本地，在本地做一些变更，例如更改文档。push 到 github，发起对 main 的合并 pr， 此时 pull request 页面就会触发
       readthedocs 的文档构建预览。可以点击查看效果。
   - sphinx 出来 rst 格式，也可以通过扩展支持 markdown 格式。也可以考虑 mkdocs
-  - doctest（文档驱动的测）/pytest（用例驱动的测试）
+  - doctest（文档驱动的测试）/pytest（用例驱动的测试）
 - ch09/
   - 关于依赖库版本和自身版本。
     - 不固定特定版本: package-a==1.0.0。
@@ -68,6 +67,7 @@ Fork of 《Publishing Python Packages》book.
   - manually run all pre-commit hooks on a repository: `pre-commit run --all-files`
   - temporarily disabling hooks: `SKIP=[hook-id] prep-commit run`
   - run single hook: `pre-commit run [hook-id]`
+  - uninstall pre-commit: docs: https://pre-commit.com/#pre-commit-uninstall
 - git command:
   - git revert XXX :
 
@@ -98,8 +98,23 @@ Fork of 《Publishing Python Packages》book.
 
 - ch10 的项目模板生成不实用，暂缓。
 
-## TODO
-- [ ] .editorconfig for general files formatting.
+## alternatives
+
+- build system backend:
+  - [x] setuotool
+  - [ ] hatchling
+  - [ ] poetry
+    - config example: https://github.com/commitizen-tools/commitizen/blob/master/pyproject.toml
+
+
+## other enhancements
+- [x] .editorconfig for general files formatting.
 - [ ] markdown file linter
-  > https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
-  > https://github.com/DavidAnson/markdownlint
+  - https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
+  - https://github.com/DavidAnson/markdownlint
+- [ ] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理commit msg。
+   - https://github.com/commitizen-tools/commitizen
+   - install: `pip install -U commitizen`
+   - init config: `cz init`
+   - install hooks: `pre-commit install --hook-type commit-msg --hook-type pre-push`
+- [ ] local run github action from tech radar recommendation
