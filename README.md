@@ -19,14 +19,14 @@ Fork of 《Publishing Python Packages》book.
   初具模型，基础的 tox 的使用
 - ch06
 
-  重构解耦代码，模块化，SOLID 原则。增加 typecheck(mypy)、lint(flake8)、format(black) 、测试 hello 配置。
+  重构解耦代码，模块化，SOLID 原则。增加 typecheck(mypy)、lint(flake8,[ruff](https://github.com/charliermarsh/ruff) )、format(black) 、测试 hello 配置。
 - ch08/
   - 增加 sphinx 文档构建配置。默认主题 alabaster 非常简陋。** 添加自定义 sphinx-rtd-theme 主题后，注意在 cfg 文件中添加对应依赖 **。
   - 托管到 read the docs 网站。注册 read the docs 账号，可以使用 github 互联。
-    - 0.保证 project 根目录下存在正确配置的.readthedocs.yaml
+    - 0. 保证 project 根目录下存在正确配置的.readthedocs.yaml
     - 1.import 特定的 github project；
-    - 2.填写元信息，勾选 advanced setting。
-    - 3.填写 Project Extra Details。
+    - 2. 填写元信息，勾选 advanced setting。
+    - 3. 填写 Project Extra Details。
   - Running sphinx-apidoc on Read the Docs。配置对应 conf.py，利用 build doc 的生命周期的 builder-inited
   - update per pull-request:
     - visit https://readthedocs.org/dashboard/publishing-python-packages/edit/
@@ -56,11 +56,10 @@ Fork of 《Publishing Python Packages》book.
     - Secret scanning: scans your code for potentially leaked passwords, API keys, and so on to protect you from
       attackers who scrape and use the information.
 - use [pre-commit](https://pre-commit.com/) hook in .pre-commit-config.yaml
-  - pre-commit一般使作用于 staged -> repository这个阶段。如果文件变更还没有staged（还没有git add），那么pre-commit会先：
-     - Stashing unstaged files.
-     - do tasks.
-     - Restore changes.
-    这个预演功能很好，非常适合本地排查问题，而不是在commit时半天无法通过。
+  - pre-commit 一般使作用于 staged -> repository 这个阶段。如果文件变更还没有 staged（还没有 git add），那么 pre-commit 会先：
+    - Stashing unstaged files.
+    - do tasks.
+    - Restore changes. 这个预演功能很好，非常适合本地排查问题，而不是在 commit 时半天无法通过。
   - pyupgrade for python syntax up to date
   - install: `pip install pre-commit`
   - setup git hooks: `pre-commit install` => .git\hooks\pre-commit
@@ -77,9 +76,9 @@ Fork of 《Publishing Python Packages》book.
 - 让 pre-commit 通过：
   - 当 pre-commit 定义的检测范围的文件格式混乱，此时 pre-commit 或者 git commit + run hooks（例如使用 IDE 勾选框 ) 都会无限失败。
   - 使用 tox 任务执行格式化，然后重试 commit，直到通过。
-  - 这里会遇到pre-commit中例如black和flake8的配置问题。
+  - 这里会遇到 pre-commit 中例如 black 和 flake8 的配置问题。
   - flake8: `args: ['--config=ch09/first-python-package/setup.cfg', '--ignore=E303']` 可以读取配置。
-  - black: 
+  - black:
     ```bash
     black....................................................................Failed
     - hook id: black
@@ -92,33 +91,42 @@ Fork of 《Publishing Python Packages》book.
     
     [WARNING] Stashed changes conflicted with hook auto-fixes... Rolling back fixes...
     ```
-    - 问题分析：black8指定了ch09的配置，但是却检测了ch08的代码。
-    - 参阅[这个问题](https://stackoverflow.com/a/74046827) ，可以手动git add 出现冲突的文件，之后再次检测。
-    - 或者指定black排除的检测范围：在pre-commit中 1.使用exclude排除部分文件夹。2.使用files指定文件夹。
+    - 问题分析：black8 指定了 ch09 的配置，但是却检测了 ch08 的代码。
+    - 参阅 [这个问题](https://stackoverflow.com/a/74046827) ，可以手动 git add 出现冲突的文件，之后再次检测。
+    - 或者指定 black 排除的检测范围：在 pre-commit 中 1. 使用 exclude 排除部分文件夹。2. 使用 files 指定文件夹。
 
 - ch10 的项目模板生成不实用，暂缓。
 
 ## alternatives
 
 - build system backend:
-  - [x] setuotool
-  - [ ] hatchling
+  - [x] setuptool
+  - [ ] hatch
   - [ ] poetry
     - config example: https://github.com/commitizen-tools/commitizen/blob/master/pyproject.toml
+- environments:
+  - [x] tox
+  - [ ] hatch
 
+> migrate setuptools to hatch, migrate tox to hatch.
+> - https://hatch.pypa.io/latest/intro/#existing-project
+> - https://hatch.pypa.io/latest/blog/2022/10/08/hatch-v160/#migration-script-improvements
+> - https://hatch.pypa.io/latest/meta/faq/#tool-migration
 
 ## other enhancements
+
 - [x] .editorconfig for general files formatting.
 - [ ] markdown file linter
   - https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
   - https://github.com/DavidAnson/markdownlint
-- [x] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理commit msg。
-   - https://github.com/commitizen-tools/commitizen
-   - install: `pip install -U commitizen`
-   - init config: `cz init`
-   - install hooks: `pre-commit install --hook-type commit-msg --hook-type pre-push`
-   - test commit: `cz c`
-   - temporarily check message: `cz check --message "chore: something"`
-   - 现在，提交模式变为: `cz c` ，或者也可以使用之前的提交方式 `git commit -m "MSG"`，不需要理会cz hooks.
-   - 一个问题：`cz c`显示的列表type中，没有chore类型，而schema规范中显示有。我希望在下拉列表中可以选择chore或自定义类型。
-- [ ] local run github action from tech radar recommendation
+- [x] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理 commit msg。
+  - https://github.com/commitizen-tools/commitizen
+  - install: `pip install -U commitizen`
+  - init config: `cz init`
+  - install hooks: `pre-commit install --hook-type commit-msg --hook-type pre-push`
+  - test commit: `cz c`
+  - temporarily check message: `cz check --message "chore: something"`
+  - 现在，提交模式变为: `cz c` ，或者也可以使用之前的提交方式 `git commit -m "MSG"`，不需要理会 cz hooks.
+  - 有关更多配置，参阅该项目 docs/ 。
+- [ ] ~~local run github action through https://github.com/nektos/act~~
+  - git clone actions 总是失败，而且无法正常设置git config的代理。
