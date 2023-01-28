@@ -109,14 +109,13 @@ Fork of 《Publishing Python Packages》book.
   - [ ] hatch
 
 > migrate setuptools to hatch, migrate tox to hatch.
-> - https://hatch.pypa.io/latest/intro/#existing-project
-> - https://hatch.pypa.io/latest/blog/2022/10/08/hatch-v160/#migration-script-improvements
+> - https://hatch.pypa.io/latest/blog/2022/10/08/hatch-v160/#migration-script-improvements (这个工具不靠谱，一堆报错)
 > - https://hatch.pypa.io/latest/meta/faq/#tool-migration
 
 ## other enhancements
 
 - [x] .editorconfig for general files formatting.
-- [ ] markdown file linter
+- [ ] markdown file linter：前置条件：迁移到hatch。hatch支持自定义scripts。
   - https://github.com/mkdocs/mkdocs/blob/c576f07d30e7f1e20ee2292c94dab3b585d9006c/pyproject.toml#L181
   - https://github.com/DavidAnson/markdownlint
 - [x] commitizen in python ecosystem. 前端构建系统很喜欢使用这个类似的工具来管理 commit msg。
