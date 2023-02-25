@@ -6,11 +6,12 @@ This package does amazing things.
 
 ```shell
 $ python -m pip install .
-$ harmony
 ```
 
 build
 
 ```bash
-python -m build --sdist
+hatch build
+hatch build -t wheel
 ```
+cython extensions的问题没有得到解决，目前这块还是不成熟。

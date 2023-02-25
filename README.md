@@ -98,18 +98,23 @@ Fork of 《Publishing Python Packages》book.
 - ch10 的项目模板生成不实用，暂缓。
 
 ## alternatives
+- dev env
+  - [ ] virtualenv 时代的眼泪
+  - [x] venv python 3.x 官方支持，推荐。
 
 - build system backend:
-  - [x] setuptool
-  - [ ] hatch
-  - [ ] poetry
+  - [x] setuptools => 这个工具缺乏对自定义脚本的支持，但是对C扩展编译支持很成熟。
+  - [ ] hatch => 支持定义脚本。目前对cython extensions的编译支持不成熟：https://github.com/pypa/hatch/issues/279。
+  - [ ] flit 
+  - [ ] poetry => 流行度也很高。对标 hatch。
     - config example: https://github.com/commitizen-tools/commitizen/blob/master/pyproject.toml
-- environments:
-  - [x] tox
-  - [ ] hatch
+  
+- multi environments config:
+  - [x] tox => 侧重于测试。较旧，兼容hatch后端，可以迁移。
+  - [ ] hatch => 侧重于构建。和hatch backend完美兼容。
 
 > migrate setuptools to hatch, migrate tox to hatch.
-> - https://hatch.pypa.io/latest/blog/2022/10/08/hatch-v160/#migration-script-improvements (这个工具不靠谱，一堆报错)
+> - ~~https://hatch.pypa.io/latest/blog/2022/10/08/hatch-v160/#migration-script-improvements~~ (这个工具不靠谱，一堆报错)
 > - https://hatch.pypa.io/latest/meta/faq/#tool-migration
 
 ## other enhancements
