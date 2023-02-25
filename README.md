@@ -19,14 +19,19 @@ Fork of 《Publishing Python Packages》book.
   初具模型，基础的 tox 的使用
 - ch06
 
-  重构解耦代码，模块化，SOLID 原则。增加 typecheck(mypy)、lint(flake8,[ruff](https://github.com/charliermarsh/ruff) )、format(black) 、测试 hello 配置。
+  重构解耦代码，模块化，SOLID 原则。增加 typecheck(mypy)、lint(flake8,[ruff](https://github.com/charliermarsh/ruff) )、format(black) 、测试
+  hello 配置。
 - ch08/
   - 增加 sphinx 文档构建配置。默认主题 alabaster 非常简陋。** 添加自定义 sphinx-rtd-theme 主题后，注意在 cfg 文件中添加对应依赖 **。
   - 托管到 read the docs 网站。注册 read the docs 账号，可以使用 github 互联。
-    - 0. 保证 project 根目录下存在正确配置的.readthedocs.yaml
+    -
+    0. 保证 project 根目录下存在正确配置的.readthedocs.yaml
+
     - 1.import 特定的 github project；
-    - 2. 填写元信息，勾选 advanced setting。
-    - 3. 填写 Project Extra Details。
+    -
+      2. 填写元信息，勾选 advanced setting。
+    -
+      3. 填写 Project Extra Details。
   - Running sphinx-apidoc on Read the Docs。配置对应 conf.py，利用 build doc 的生命周期的 builder-inited
   - update per pull-request:
     - visit https://readthedocs.org/dashboard/publishing-python-packages/edit/
@@ -56,10 +61,14 @@ Fork of 《Publishing Python Packages》book.
     - Secret scanning: scans your code for potentially leaked passwords, API keys, and so on to protect you from
       attackers who scrape and use the information.
 - use [pre-commit](https://pre-commit.com/) hook in .pre-commit-config.yaml
-  - pre-commit 一般使作用于 staged -> repository 这个阶段。如果文件变更还没有 staged（还没有 git add），那么 pre-commit 会先：
+  - pre-commit 一般是作用于 working --(`git add`)--> staged --(pre-commit 位于这里)--> commit 这个阶段。 如果文件变更还没有 staged（还没有 git
+    add），那么 pre-commit 会先：
     - Stashing unstaged files.
     - do tasks.
-    - Restore changes. 这个预演功能很好，非常适合本地排查问题，而不是在 commit 时半天无法通过。
+    - Restore changes.
+
+    如果文件更改都已经 git add，那么pre-commit不会执行git add，而是直接开始检测。 也就是说pre-commit检测的是working和staged
+    阶段的代码，这就是pre-commit的含义，保证了进入commit阶段的变更，都是经过检测的。
   - pyupgrade for python syntax up to date
   - install: `pip install pre-commit`
   - setup git hooks: `pre-commit install` => .git\hooks\pre-commit
@@ -98,6 +107,7 @@ Fork of 《Publishing Python Packages》book.
 - ch10 的项目模板生成不实用，暂缓。
 
 ## alternatives
+
 - dev env
   - [ ] virtualenv 时代的眼泪
   - [x] venv python 3.x 官方支持，推荐。
@@ -105,10 +115,10 @@ Fork of 《Publishing Python Packages》book.
 - build system backend:
   - [x] setuptools => 这个工具缺乏对自定义脚本的支持，但是对C扩展编译支持很成熟。
   - [ ] hatch => 支持定义脚本。目前对cython extensions的编译支持不成熟：https://github.com/pypa/hatch/issues/279。
-  - [ ] flit 
+  - [ ] flit
   - [ ] poetry => 流行度也很高。对标 hatch。
     - config example: https://github.com/commitizen-tools/commitizen/blob/master/pyproject.toml
-  
+
 - multi environments config:
   - [x] tox => 侧重于测试。较旧，兼容hatch后端，可以迁移。
   - [ ] hatch => 侧重于构建。和hatch backend完美兼容。
