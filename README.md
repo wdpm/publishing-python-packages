@@ -24,14 +24,10 @@ Fork of 《Publishing Python Packages》book.
 - ch08/
   - 增加 sphinx 文档构建配置。默认主题 alabaster 非常简陋。** 添加自定义 sphinx-rtd-theme 主题后，注意在 cfg 文件中添加对应依赖 **。
   - 托管到 read the docs 网站。注册 read the docs 账号，可以使用 github 互联。
-    -
-    0. 保证 project 根目录下存在正确配置的.readthedocs.yaml
-
-    - 1.import 特定的 github project；
-    -
-      2. 填写元信息，勾选 advanced setting。
-    -
-      3. 填写 Project Extra Details。
+    1. 保证 project 根目录下存在正确配置的.readthedocs.yaml
+    2. import 特定的 github project；
+    3. 填写元信息，勾选 advanced setting。
+    4. 填写 Project Extra Details。
   - Running sphinx-apidoc on Read the Docs。配置对应 conf.py，利用 build doc 的生命周期的 builder-inited
   - update per pull-request:
     - visit https://readthedocs.org/dashboard/publishing-python-packages/edit/
